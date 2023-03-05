@@ -1,4 +1,4 @@
-name: Build/Update regression environment
+name: Run regression environment
 
 on:
   workflow_dispatch:
