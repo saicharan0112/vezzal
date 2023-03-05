@@ -10,8 +10,6 @@ ENV mail_key $key
 ARG emails
 ENV mail_list $emails
 
-RUN echo "key - "$mail_key
-RUN echo "email list - "$mail_list
 WORKDIR /vezzal
 RUN chmod +x scripts/test_netgen.sh
-RUN scripts/test_netgen.sh
+RUN scripts/test_netgen.sh $mail_list $mail_key

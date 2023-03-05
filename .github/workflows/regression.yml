@@ -1,4 +1,4 @@
-name: Run regression environment
+name: Run regression
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build images with testcases and run regression
+      - name: Build image with testcases and run regression
         env:
               IMAGE_NAME: ghcr.io/saicharan0112/magic_netgen_ci:alpha
         run: |
