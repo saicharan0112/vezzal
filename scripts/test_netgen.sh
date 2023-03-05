@@ -10,27 +10,20 @@
 ##
 ##########################################################################
 
-echo ""
-echo "#######################################################################"
-echo "##                       Welcome to Vezzal                           ##"
-echo "##                                                                   ##"
-echo "## Vezzal is used in test mode - accepted tools are netgen and magic ##"
-echo "#######################################################################"
 
-echo ""
-
-
-#Configuring Vezzal with netgen tool "
+#Configuring Vezzal with netgen tool
 mkdir -p /vezzal/tools
 
 # install dependencies
-apt-get install tk-dev tcl-dev 
-#wget bison flex libx11-dev libx11-6 libxaw7-dev libreadline6-dev autoconf libtool automake git -y
+apt-get install tk-dev tcl-dev m4 -y
 
+# clone and install netgen
 cd /vezzal/tools && git clone https://github.com/RTimothyEdwards/netgen.git > /dev/null 2>&1
 cd netgen/
 ./configure && make > /dev/null 2>&1
 make install > /dev/null 2>&1
+
+# run netgen on various testcases
 if [ $(which netgen) ]; then
 	cd /vezzal/testcases/netgen/
         for i in $(find -type d -maxdepth 1)
@@ -46,21 +39,19 @@ if [ $(which netgen) ]; then
         then
                 echo "###################################"
 
-                #python3 /vezzal/mail-report.py netgen-Fail $1 "agyyupumhqsvjtos"
+                #python3 /vezzal/scripts/mail-report.py netgen-Fail $1 "agyyupumhqsvjtos"
 		#/vezzal/testcases/netgen/clean.sh
-                cd tl
+                exit(1)
 
         else
                 echo "***Passed***"
                 echo " "
                 echo "###################################"
-                #python3 /vezzal/mail-report.py netgen-Success $1 "agyyupumhqsvjtos"
+                #python3 /vezzal/scripts/mail-report.py netgen-Success $1 "agyyupumhqsvjtos"
 		#/vezzal/testcases/netgen/clean.sh
+                exit(0)
         fi
 else
 	echo "Netgen tool installation failed"
         cd td/
 fi
-#rm -rf /vezzal/tools/*
-#rm /usr/local/bin/netgen
-
