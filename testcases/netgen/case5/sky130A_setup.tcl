@@ -1,1 +1,1 @@
-/vezzal/pdks/sky130A/libs.tech/netgen/sky130A_setup.tcl
+/usr/bin/miniconda3/share/pdk//sky130A/libs.tech/netgen/sky130A_setup.tcl

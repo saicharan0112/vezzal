@@ -21,8 +21,13 @@ echo ""
 
 
 #Configuring Vezzal with netgen tool "
-cd /vezzal/tools/
-git clone https://github.com/RTimothyEdwards/netgen.git > /dev/null 2>&1
+mkdir -p /vezzal/tools
+
+# install dependencies
+apt-get install tk-dev tcl-dev 
+#wget bison flex libx11-dev libx11-6 libxaw7-dev libreadline6-dev autoconf libtool automake git -y
+
+cd /vezzal/tools && git clone https://github.com/RTimothyEdwards/netgen.git > /dev/null 2>&1
 cd netgen/
 ./configure && make > /dev/null 2>&1
 make install > /dev/null 2>&1
@@ -41,21 +46,21 @@ if [ $(which netgen) ]; then
         then
                 echo "###################################"
 
-                python3 /vezzal/mail-report.py netgen-Fail $1 "agyyupumhqsvjtos"
-		/vezzal/testcases/netgen/clean.sh
+                #python3 /vezzal/mail-report.py netgen-Fail $1 "agyyupumhqsvjtos"
+		#/vezzal/testcases/netgen/clean.sh
                 cd tl
 
         else
                 echo "***Passed***"
                 echo " "
                 echo "###################################"
-                python3 /vezzal/mail-report.py netgen-Success $1 "agyyupumhqsvjtos"
-		/vezzal/testcases/netgen/clean.sh
+                #python3 /vezzal/mail-report.py netgen-Success $1 "agyyupumhqsvjtos"
+		#/vezzal/testcases/netgen/clean.sh
         fi
 else
 	echo "Netgen tool installation failed"
         cd td/
 fi
-rm -rf /vezzal/tools/*
-rm /usr/local/bin/netgen
+#rm -rf /vezzal/tools/*
+#rm /usr/local/bin/netgen
 
