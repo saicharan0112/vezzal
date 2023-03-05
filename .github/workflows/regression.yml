@@ -7,7 +7,7 @@ on:
 
 jobs:
   build_docker_image:
-    runs-on: ubuntu:22.10
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - name: Login to GitHub Container Registry
@@ -17,10 +17,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push the docker image
+      - name: Build images with testcases and run regression
         env:
               IMAGE_NAME: ghcr.io/saicharan0112/magic_netgen_ci:alpha
         run: |
-          cd $GITHUB_WORKSPACE/environment
-          docker build . --tag $IMAGE_NAME --no-cache
-          docker push $IMAGE_NAME
+          cd $GITHUB_WORKSPACE/regression
+          docker build --tag $IMAGE_NAME --no-cache --build-arg key=${{ secrets.MAIL_KEY }} --build-arg emails_list=${{ secrets.MAIL_LIST }} .
