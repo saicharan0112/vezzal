@@ -2,8 +2,8 @@ FROM ghcr.io/saicharan0112/magic_netgen_ci:alpha
 
 RUN apt-get -y update
 RUN apt-get -y upgrade
-COPY ../testcases /vezzal/testcases
-COPY ../scripts /vezzal/scripts
+COPY testcases /vezzal/testcases
+COPY scripts /vezzal/scripts
 ARG key
 ENV mail_key $key
 
