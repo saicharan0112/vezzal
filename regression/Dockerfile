@@ -14,3 +14,4 @@ RUN echo "key - "$mail_key
 RUN echo "email list - "$mail_list
 WORKDIR /vezzal
 RUN chmod +x scripts/test_netgen.sh
+RUN scripts/test_netgen.sh

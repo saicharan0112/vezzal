@@ -22,4 +22,4 @@ jobs:
               IMAGE_NAME: ghcr.io/saicharan0112/magic_netgen_ci:alpha
         run: |
           cd $GITHUB_WORKSPACE/regression
-          docker build --tag $IMAGE_NAME --no-cache --build-arg key=${{ secrets.MAIL_KEY }} --build-arg emails_list=${{ secrets.MAIL_LIST }} .
+          docker build --tag $IMAGE_NAME --no-cache --build-arg key=${{ secrets.MAIL_KEY }} --build-arg emails=${{ secrets.MAIL_LIST }} .
