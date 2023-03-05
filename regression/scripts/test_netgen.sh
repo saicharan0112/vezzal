@@ -18,10 +18,10 @@ mkdir -p /vezzal/tools
 apt-get install tk-dev tcl-dev m4 -y
 
 # clone and install netgen
-cd /vezzal/tools && git clone https://github.com/RTimothyEdwards/netgen.git > /dev/null 2>&1
+cd /vezzal/tools && git clone https://github.com/RTimothyEdwards/netgen.git
 cd netgen/
-./configure && make > /dev/null 2>&1
-make install > /dev/null 2>&1
+./configure && make
+make install
 
 # run netgen on various testcases
 if [ $(which netgen) ]; then
@@ -41,7 +41,6 @@ if [ $(which netgen) ]; then
 
                 #python3 /vezzal/scripts/mail-report.py netgen-Fail $1 "agyyupumhqsvjtos"
 		#/vezzal/testcases/netgen/clean.sh
-                exit(1)
 
         else
                 echo "***Passed***"
@@ -49,7 +48,6 @@ if [ $(which netgen) ]; then
                 echo "###################################"
                 #python3 /vezzal/scripts/mail-report.py netgen-Success $1 "agyyupumhqsvjtos"
 		#/vezzal/testcases/netgen/clean.sh
-                exit(0)
         fi
 else
 	echo "Netgen tool installation failed"
