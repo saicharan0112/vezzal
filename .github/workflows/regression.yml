@@ -6,7 +6,7 @@ on:
   #  - cron: 0 1 * * * # run at 1 AM UTC
 
 jobs:
-  build_docker_image:
+  run_regression:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2

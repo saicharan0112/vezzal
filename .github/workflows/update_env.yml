@@ -2,11 +2,9 @@ name: Build/Update regression environment
 
 on:
   workflow_dispatch:
-  # schedule:
-  #  - cron: 0 1 * * * # run at 1 AM UTC
 
 jobs:
-  build_docker_image:
+  build_ci_image:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
