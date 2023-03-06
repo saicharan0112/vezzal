@@ -10,15 +10,6 @@
 ##
 ##########################################################################
 
-echo ""
-echo "#######################################################################"
-echo "##                       Welcome to Vezzal                           ##"
-echo "##                                                                   ##"
-echo "## Vezzal is used in test mode - accepted tools are netgen and magic ##"
-echo "#######################################################################"
-
-echo ""
-
 
 # install dependencies for magic
 apt-get install m4 csh tcsh libx11-dev tcl-dev tk-dev -y
@@ -46,7 +37,7 @@ if [ $(magic --version) ]; then
         then
                 echo "###################################"
 
-                python3 /vezzal/mail-report.py magic-Fail $1 "agyyupumhqsvjtos"
+                python3 /vezzal/mail-report.py magic-Fail $1 $2
                 cd tl
 
         else
@@ -54,7 +45,7 @@ if [ $(magic --version) ]; then
 		echo "            ***Passed***           "
                 echo " "
                 echo "###################################"
-                python3 /vezzal/mail-report.py magic-Success $1 "agyyupumhqsvjtos"
+                python3 /vezzal/mail-report.py magic-Success $1 $2
 		/vezzal/testcases/magic/clean.sh
         fi
 else

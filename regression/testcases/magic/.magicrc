@@ -20,7 +20,7 @@ ext2spice scale off
 
 # Allow override of PDK path from environment variable PDKPATH
 if {[catch {set PDKPATH $env(PDKPATH)}]} {
-    set PDKPATH "/vezzal/pdks/sky130A"
+    set PDKPATH "/usr/bin/miniconda3/share/pdk/sky130A"
 }
 
 # loading technology
