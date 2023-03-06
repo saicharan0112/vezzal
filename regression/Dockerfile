@@ -11,5 +11,5 @@ ARG emails
 ENV mail_list $emails
 
 WORKDIR /vezzal
-RUN chmod +x scripts/test_netgen.sh
-RUN scripts/test_netgen.sh $mail_list $mail_key
+RUN chmod +x scripts/test_magic.sh
+RUN scripts/test_magic.sh $mail_list $mail_key
