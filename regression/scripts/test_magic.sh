@@ -37,7 +37,7 @@ if [ $(magic --version) ]; then
         then
                 echo "###################################"
 
-                python3 /vezzal/mail-report.py magic-Fail $1 $2
+                python3 /vezzal/scripts/mail-report.py magic-Fail $1 $2
                 cd tl
 
         else
@@ -45,7 +45,7 @@ if [ $(magic --version) ]; then
 		echo "            ***Passed***           "
                 echo " "
                 echo "###################################"
-                python3 /vezzal/mail-report.py magic-Success $1 $2
+                python3 /vezzal/scripts/mail-report.py magic-Success $1 $2
 		/vezzal/testcases/magic/clean.sh
         fi
 else
